@@ -15,9 +15,9 @@
   <div class="d-flex justify-content-between w-100 m-0 mt-3">
       <img  (click)="reset()"  class="ml-3" src='assets/df.svg' width="80px" alt='learning' />
       <div>
-        <button disabled class="mx-2 btn btn-sm btn-light">1st Term</button>
-        <button disabled class="mx-2 btn btn-sm btn-light">2nd Term</button>
-        <button class="mx-2  btn btn-sm btn-primary">3rd Term</button>
+        <button disabled class="mx-1 btn btn-sm btn-light">1st Term</button>
+        <button disabled class="mx-1 btn btn-sm btn-light">2nd Term</button>
+        <button class="mx-1  btn btn-sm btn-primary">3rd Term</button>
       </div>
 
 
@@ -28,18 +28,19 @@
 
     <div class="col-sm-12 col-md-3 mt-4 mb-4">
         <mat-accordion >
-            <mat-expansion-panel *ngFor="let class of juniorClasses"  >
+            <mat-expansion-panel  #mapanel="matExpansionPanel"
+             *ngFor="let class of juniorClasses; let i"  >
               <mat-expansion-panel-header>
                 <mat-panel-title>
                   {{class.name}}
                 </mat-panel-title>             
               </mat-expansion-panel-header>
               <ul  *ngFor="let subject of juniorClassSubjects" > 
-                  <p class="text-primary mousepointer" (click)="handleLoad(class.value,subject.value)">{{subject.name}}</p>
+                  <p class="text-primary mousepointer" (click)="handleLoad(class.value,subject.value); mapanel.close()">{{subject.name}}</p>
                 </ul>
     
             </mat-expansion-panel>
-            <mat-expansion-panel *ngFor="let class of seniorClasses"  >
+            <mat-expansion-panel  [expanded]="false" *ngFor="let class of seniorClasses"  >
               <mat-expansion-panel-header>
                 <mat-panel-title>
                   {{class.name}}

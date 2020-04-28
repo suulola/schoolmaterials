@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { allHTML } from "./data"
+import { JSSHTMLData, SSHTMLData } from "./data"
 
 @Component({
   selector: 'app-root',
@@ -18,9 +18,8 @@ export class AppComponent  {
   ];
 
   seniorClasses = [
-    {name: "SSS 1", value: "SSS1"},
-    {name: "SSS 2", value: "SSS1"},
-    {name: "SSS 3", value: "SSS1"},
+    {name: "SSS 1", value: "SS1"},
+    {name: "SSS 2", value: "SS2"},
   ];
  
   juniorClassSubjects = [
@@ -40,23 +39,27 @@ export class AppComponent  {
   ];
  
   seniorClassSubjects = [
-    {name: "English Language"},
-    {name: "Geography"},
-    {name: "Literature-in-English"},
-    {name: "Further Mathematics"},
-    {name: "Agricultural Science"},
-    {name: "Financial Accounting"},
-    {name: "Biology"},
-    {name: "Physics"},
-    {name: "Economics"},
-    {name: "Chemistry"},
-    {name: "Commerce"},
-    {name: "Data Processing"},
-    {name: "Mathematics"},
+    {name: "English Language", value: "eng"},
+    {name: "Geography", value: "geo"},
+    {name: "Literature-in-English", value: "lit"},
+    {name: "Further Mathematics", value: "futhmaths"},
+    {name: "Agricultural Science", value: "agric"},
+    {name: "Financial Accounting", value: "finacc"},
+    {name: "Biology", value: "bio"},
+    {name: "Physics", value: "phy"},
+    {name: "Economics", value: "econs"},
+    {name: "Chemistry", value: "chem"},
+    {name: "Commerce", value: "comm"},
+    {name: "Data Processing", value: "dataproc"},
+    {name: "Mathematics", value: "maths"},
+    {name: "Civic Education", value: "civic"},
   ];
 
-  handleLoad( cla, subject) {
-    this.data =   allHTML[cla][subject]  == undefined ? "No data " : allHTML[cla][subject].data
+  handleJSSLoad( cla, subject) {
+    this.data =   JSSHTMLData[cla][subject]  == undefined ? "No data " : JSSHTMLData[cla][subject].data
+  }
+  handleSSSLoad( cla, subject) {
+    this.data =   SSHTMLData[cla][subject]  == undefined ? "No data " : SSHTMLData[cla][subject].data
   }
  
   

@@ -36,18 +36,18 @@
                 </mat-panel-title>             
               </mat-expansion-panel-header>
               <ul  *ngFor="let subject of juniorClassSubjects" > 
-                  <p class="text-primary mousepointer" (click)="handleLoad(class.value,subject.value); mapanel.close()">{{subject.name}}</p>
+                  <p class="text-primary mousepointer" (click)="handleJSSLoad(class.value,subject.value); mapanel.close()">{{subject.name}}</p>
                 </ul>
     
             </mat-expansion-panel>
-            <mat-expansion-panel  [expanded]="false" *ngFor="let class of seniorClasses"  >
+            <mat-expansion-panel   #mapanel="matExpansionPanel" *ngFor="let class of seniorClasses"  >
               <mat-expansion-panel-header>
                 <mat-panel-title>
                   {{class.name}}
                 </mat-panel-title>             
               </mat-expansion-panel-header>
               <ul  *ngFor="let subject of seniorClassSubjects" >
-                  <li>{{subject.name}}</li>
+                  <p class="text-primary mousepointer" (click)="handleSSSLoad(class.value,subject.value); mapanel.close()">{{subject.name}}</p>
                 </ul>    
             </mat-expansion-panel>
           </mat-accordion>

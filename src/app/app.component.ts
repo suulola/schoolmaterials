@@ -1,14 +1,12 @@
-import { Component } from '@angular/core';
-import * as mammoth from 'mammoth/mammoth.browser.js';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { allHTML } from "./data"
-
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent  {
   title = '3rd Term';
 
   data: string = `<img src="assets/students.svg" alt="learning" class="imageHeight">`
@@ -58,11 +56,10 @@ export class AppComponent {
   ];
 
   handleLoad( cla, subject) {
-    console.log(subject)
-    console.log(cla)
     this.data =   allHTML[cla][subject]  == undefined ? "No data " : allHTML[cla][subject].data
-
   }
+ 
+  
 
   reset() {
     this.data= `<img src="assets/students.svg" alt="learning" class="imageHeight">`

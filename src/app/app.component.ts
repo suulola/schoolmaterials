@@ -1,12 +1,36 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { JSSHTMLData, SSHTMLData } from "./data"
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent  {
+export class AppComponent implements OnInit  {
+
+  JSSHTMLData: any = {};
+  SSHTMLData: any = {};
+
+  async ngOnInit() {
+
+ const res = await fetch("https://gist.githubusercontent.com/mySuulola/acd085b0287648332d8d563bffff47b2/raw/677225e5ab684b1373e32c65169a527bc54826ca/subject.json", {
+  // method: 'GET', // *GET, POST, PUT, DELETE, etc.
+  mode: 'no-cors', // no-cors, *cors, same-origin
+  // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+  // credentials: 'same-origin', // include, *same-origin, omit
+  headers: {
+    'Content-Type': 'application/json'
+    // 'Content-Type': 'application/x-www-form-urlencoded',
+  },
+  // redirect: 'follow', // manual, *follow, error
+  // referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+  // body: JSON.stringify(data) // body data type must match "Content-Type" header
+})
+console.log(res)
+ const result = res.json()
+ console.log(result)
+ 
+}
+
   title = '3rd Term';
 
   data: string = `<img src="assets/students.svg" alt="learning" class="imageHeight">`
@@ -56,10 +80,14 @@ export class AppComponent  {
   ];
 
   handleJSSLoad( cla, subject) {
-    this.data =   JSSHTMLData[cla][subject]  == undefined ? "No data " : JSSHTMLData[cla][subject].data
+    if(this.JSSHTMLData === {}) {
+      // do nothing
+      return;
+    }
+    this.data =   this.JSSHTMLData[cla][subject]  == undefined ? "No data " : this.JSSHTMLData[cla][subject].data
   }
   handleSSSLoad( cla, subject) {
-    this.data =   SSHTMLData[cla][subject]  == undefined ? "No data " : SSHTMLData[cla][subject].data
+    this.data =   this.SSHTMLData[cla][subject]  == undefined ? "No data " : this.SSHTMLData[cla][subject].data
   }
  
   
